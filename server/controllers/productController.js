@@ -18,7 +18,7 @@ class ProductController{
                 info.forEach(i => {
                     ProductInfo.create({
                         title: i.title,
-                        description: i.description,
+                        descriptin: i.descriptin,
                         productId: product.id
                     })
                 })
