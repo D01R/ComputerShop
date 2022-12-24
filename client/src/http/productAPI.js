@@ -36,3 +36,8 @@ export const fetchOneProduct = async (id) =>{
     const {data} = await $host.get('api/product/'+id)
     return data
 } 
+
+export const addProductBasket = async (product) => {
+    const {data} = await $authHost.post('api/product/basket',product)
+    return data
+}

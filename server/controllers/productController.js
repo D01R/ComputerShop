@@ -1,4 +1,4 @@
-const {Product, ProductInfo} = require('../models/models')
+const {Product, ProductInfo, ProductBasket, Basket} = require('../models/models')
 const uuid = require('uuid')
 const path = require('path')
 const ApiError = require('../error/ApiError')
@@ -60,6 +60,21 @@ class ProductController{
             }
         )
         return res.json(product)
+    }
+    async addProductBasket(req,res, next){
+        try{
+            const {productId} = req.body
+            const userId = req.user.id
+
+            const basket = await Basket.findOne({where: {userId}})
+            
+            const productBasket = await ProductBasket.create({basketId: basket.id, productId})
+
+            return res.json(productBasket)
+        } catch(e){
+            next(ApiError.badRequest(e.message))
+        }
+
     }
 }
 

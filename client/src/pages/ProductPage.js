@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Container, Image, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import star from '../assets/star.png'
-import { fetchOneProduct } from '../http/productAPI'
+import { addProductBasket, fetchOneProduct } from '../http/productAPI'
 
 
 const ProductPage = () => {
@@ -12,11 +12,20 @@ const ProductPage = () => {
         fetchOneProduct(id).then(data => setProduct(data))
     },[])
 
+    const addProduct = () => {
+        try{
+            addProductBasket({productId: id}).then()
+        } catch(e){
+            alert(e.response.data.message)
+        }
+        
+    }
+
     return (
         <Container>
             <Row className='mt-3'>
                 <Col md={4}>
-                    <Image width={300} height={300} src={process.env.REACT_APP_API_URL + product.img}/>
+                    <Image width={200} height={200} src={process.env.REACT_APP_API_URL + product.img}/>
                 </Col>
                 <Col md={8}>
                     <Card className='d-flex flex-column align-items-start justify-content-around ps-5' style={{width: 600, height: 300, fontSize: 32, border: '5px solid lightgray'}}>
@@ -31,7 +40,7 @@ const ProductPage = () => {
                         </div>
                         <div  className="d-flex align-items-center justify-content-between" style={{width: 500}}>
                             <h3>{product.price}</h3> руб.
-                            <Button variant={'outline-dark'} style={{fontSize: 25}}>В корзину</Button>
+                            <Button variant={'outline-dark'} style={{fontSize: 25}} onClick={addProduct}>В корзину</Button>
                         </div>
                     </Card>
                 </Col>

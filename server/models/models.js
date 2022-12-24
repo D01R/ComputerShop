@@ -58,11 +58,11 @@ Basket.belongsTo(User)
 User.hasMany(Rating)
 Rating.belongsTo(User)
 
-Basket.hasMany(ProductBasket)
+Basket.hasMany(ProductBasket, {as: 'productsBasket'})
 ProductBasket.belongsTo(Basket)
 
 Product.hasMany(ProductBasket)
-ProductBasket.belongsTo(Product)
+ProductBasket.belongsTo(Product, {as: 'product'})
 
 Product.hasMany(Rating)
 Rating.belongsTo(Product)
