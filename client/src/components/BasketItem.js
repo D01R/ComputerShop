@@ -12,7 +12,6 @@ const BasketItem = ({product}) =>{
       <Card
         className="mt-5 p-4"
         border="dark"
-        
       >
         <Row onClick={() => navigate(PRODUCT_ROUTE + "/" + product.id)}>
             <Col md={4} className='d-flex justify-content-center'>
