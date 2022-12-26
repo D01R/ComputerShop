@@ -25,6 +25,18 @@ class BasketController{
             next(ApiError.badRequest(e.message))
         }
     }
+
+    async deleteProductBasket(req,res,next){
+        const id = Number(req.params.id)
+        try{
+            const result = await ProductBasket.destroy({
+                where: {id: id}
+            })
+            return res.status(200).json({message: 'Deleted successfully'})
+        } catch(e){
+            next(ApiError.badRequest(e.message))
+        }
+    }
 }
 
 module.exports = new BasketController()

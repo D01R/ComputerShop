@@ -31,8 +31,7 @@ const ProductPage = () => {
                     <Card className='d-flex flex-column align-items-start justify-content-around ps-5' style={{width: 600, height: 300, fontSize: 32, border: '5px solid lightgray'}}>
                         <h2>{product.name}</h2>
                         <div className="d-flex align-items-center">
-                            <p className='mb-0 me-2'>рейтинг: </p>
-                            <div>{product.rating}</div>
+                            <p className='mb-0 me-2'>рейтинг: {product.rating}</p>
                             <Image width={18} height={18} src={star}/>
                         </div>
                         <div  className="d-flex align-items-center" style={{width: 500}}>
